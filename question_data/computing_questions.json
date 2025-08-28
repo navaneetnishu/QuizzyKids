@@ -1,0 +1,20 @@
+[
+  {
+    "topic": "digital_literacy",
+    "year_group": "Year 5",
+    "difficulty": "Easy",
+    "question": "What should you do if you receive a suspicious email?",
+    "options": ["Open all attachments", "Reply with personal information", "Delete it without opening", "Forward it to friends"],
+    "correct_answer": "Delete it without opening",
+    "explanation": "Suspicious emails should be deleted without opening to avoid viruses or scams."
+  },
+  {
+    "topic": "algorithms",
+    "year_group": "Year 3",
+    "difficulty": "Easy",
+    "question": "What is an algorithm?",
+    "options": ["A set of instructions", "A computer", "A program", "A game"],
+    "correct_answer": "A set of instructions",
+    "explanation": "An algorithm is a set of step-by-step instructions to solve a problem."
+  }
+]

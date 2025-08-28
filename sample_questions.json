@@ -1,0 +1,82 @@
+[
+  {
+    "subject": "maths",
+    "topic": "place_value",
+    "year_group": "Year 2",
+    "difficulty": "Easy",
+    "question": "What is the value of the tens digit in 34?",
+    "options": ["3", "4", "30", "40"],
+    "correct_answer": "3",
+    "explanation": "In 34, the tens digit is 3."
+  },
+  {
+    "subject": "maths",
+    "topic": "place_value",
+    "year_group": "Year 2",
+    "difficulty": "Easy",
+    "question": "What is the value of the ones digit in 67?",
+    "options": ["6", "7", "60", "70"],
+    "correct_answer": "7",
+    "explanation": "In 67, the ones digit is 7."
+  },
+  {
+    "subject": "maths",
+    "topic": "addition_subtraction",
+    "year_group": "Year 3",
+    "difficulty": "Medium",
+    "question": "What is 156 + 234?",
+    "options": ["380", "390", "400", "410"],
+    "correct_answer": "390",
+    "explanation": "156 + 234 = 390"
+  },
+  {
+    "subject": "science",
+    "topic": "living_things",
+    "year_group": "Year 1",
+    "difficulty": "Easy",
+    "question": "Which of these is a living thing?",
+    "options": ["Rock", "Tree", "Car", "Book"],
+    "correct_answer": "Tree",
+    "explanation": "A tree is a living thing that grows and reproduces."
+  },
+  {
+    "subject": "science",
+    "topic": "materials",
+    "year_group": "Year 2",
+    "difficulty": "Medium",
+    "question": "What material is most suitable for making a raincoat?",
+    "options": ["Paper", "Cotton", "Plastic", "Wood"],
+    "correct_answer": "Plastic",
+    "explanation": "Plastic is waterproof and suitable for raincoats."
+  },
+  {
+    "subject": "computing",
+    "topic": "algorithms",
+    "year_group": "Year 3",
+    "difficulty": "Easy",
+    "question": "What is an algorithm?",
+    "options": ["A computer", "A set of instructions", "A type of game", "A website"],
+    "correct_answer": "A set of instructions",
+    "explanation": "An algorithm is a set of step-by-step instructions to solve a problem."
+  },
+  {
+    "subject": "history",
+    "topic": "british_history",
+    "year_group": "Year 4",
+    "difficulty": "Medium",
+    "question": "Who was the first Tudor king of England?",
+    "options": ["Henry VII", "Henry VIII", "Edward VI", "Mary I"],
+    "correct_answer": "Henry VII",
+    "explanation": "Henry VII was the first Tudor king, ruling from 1485 to 1509."
+  },
+  {
+    "subject": "geography",
+    "topic": "physical_geography",
+    "year_group": "Year 5",
+    "difficulty": "Hard",
+    "question": "What type of rock is formed by heat and pressure?",
+    "options": ["Sedimentary", "Metamorphic", "Igneous", "Volcanic"],
+    "correct_answer": "Metamorphic",
+    "explanation": "Metamorphic rocks are formed when existing rocks are changed by heat and pressure."
+  }
+]

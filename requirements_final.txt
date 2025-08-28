@@ -1,0 +1,57 @@
+# Final Production Requirements
+# Oracle Cloud + Cloudflare R2 + SQLite + GitHub Backup
+# Cost: £0-£2/month for 500,000+ users
+
+# Core Flask Framework
+Flask==2.3.3
+Flask-CORS==4.0.0
+Flask-Limiter==3.5.0
+
+# PDF Generation
+reportlab==4.0.4
+Pillow==10.0.1
+
+# Cloud Storage (Cloudflare R2)
+boto3==1.34.0
+botocore==1.34.0
+
+# Database (SQLite - built-in)
+# No additional requirements needed
+
+# System Monitoring
+psutil==5.9.6
+
+# Production Server
+gunicorn==21.2.0
+
+# Environment Variables
+python-dotenv==1.0.0
+
+# Data Processing
+gzip
+pickle
+json
+sqlite3
+# All built-in Python modules
+
+# Threading and Time
+threading
+time
+datetime
+# All built-in Python modules
+
+# File Operations
+tempfile
+shutil
+subprocess
+os
+# All built-in Python modules
+
+# Collections and Functional Programming
+collections
+functools
+# All built-in Python modules
+
+# Logging
+logging
+# Built-in Python module

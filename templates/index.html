@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Practice PDF Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 50%, #d0d0d0 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Khan Academy Style Decorative Shapes */
+        .decorative-shape {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.15;
+            animation: gentle-float 8s ease-in-out infinite;
+        }
+
+        /* Orange Crosses */
+        .shape-cross {
+            color: #FF6B47;
+            font-size: 24px;
+            transform: rotate(45deg);
+        }
+
+        .shape-cross.large {
+            font-size: 36px;
+            opacity: 0.6;
+        }
+
+        .shape-cross.medium {
+            font-size: 28px;
+            opacity: 0.55;
+        }
+
+        .shape-cross.small {
+            font-size: 20px;
+            opacity: 0.5;
+        }
+
+        /* Purple Circles */
+        .shape-circle {
+            width: 30px;
+            height: 30px;
+            border: 3px solid #7C3AED;
+            border-radius: 50%;
+            background: transparent;
+        }
+
+        .shape-circle.large {
+            width: 50px;
+            height: 50px;
+            border-width: 4px;
+            opacity: 0.65;
+        }
+
+        .shape-circle.medium {
+            width: 40px;
+            height: 40px;
+            border-width: 3px;
+            opacity: 0.6;
+        }
+
+        .shape-circle.small {
+            width: 25px;
+            height: 25px;
+            border-width: 2px;
+            opacity: 0.55;
+        }
+
+        /* Mint Green Diamonds */
+        .shape-diamond {
+            width: 25px;
+            height: 25px;
+            background: #10B981;
+            transform: rotate(45deg);
+        }
+
+        .shape-diamond.large {
+            width: 45px;
+            height: 45px;
+            opacity: 0.6;
+        }
+
+        .shape-diamond.medium {
+            width: 35px;
+            height: 35px;
+            opacity: 0.55;
+        }
+
+        .shape-diamond.small {
+            width: 20px;
+            height: 20px;
+            opacity: 0.5;
+        }
+
+        /* Orange Stars */
+        .shape-star {
+            color: #FF8C00;
+            font-size: 20px;
+        }
+
+        .shape-star.large {
+            font-size: 32px;
+            opacity: 0.7;
+        }
+
+        .shape-star.medium {
+            font-size: 24px;
+            opacity: 0.65;
+        }
+
+        .shape-star.small {
+            font-size: 16px;
+            opacity: 0.6;
+        }
+
+        /* Blue Geometric Shapes */
+        .shape-triangle {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 26px solid #1E40AF;
+        }
+
+        .shape-triangle.large {
+            border-left-width: 25px;
+            border-right-width: 25px;
+            border-bottom-width: 43px;
+            opacity: 0.6;
+        }
+
+        .shape-triangle.medium {
+            border-left-width: 20px;
+            border-right-width: 20px;
+            border-bottom-width: 35px;
+            opacity: 0.55;
+        }
+
+        .shape-triangle.small {
+            border-left-width: 12px;
+            border-right-width: 12px;
+            border-bottom-width: 21px;
+            opacity: 0.5;
+        }
+
+        .shape-square {
+            width: 25px;
+            height: 25px;
+            border: 3px solid #1E40AF;
+            background: transparent;
+            transform: rotate(15deg);
+        }
+
+        .shape-square.large {
+            width: 45px;
+            height: 45px;
+            border-width: 4px;
+            opacity: 0.65;
+        }
+
+        .shape-square.medium {
+            width: 35px;
+            height: 35px;
+            border-width: 3px;
+            opacity: 0.6;
+        }
+
+        .shape-square.small {
+            width: 20px;
+            height: 20px;
+            border-width: 2px;
+            opacity: 0.55;
+        }
+
+        /* Pink Hearts */
+        .shape-heart {
+            color: #FF69B4;
+            font-size: 20px;
+        }
+
+        .shape-heart.large {
+            font-size: 32px;
+            opacity: 0.7;
+        }
+
+        .shape-heart.medium {
+            font-size: 24px;
+            opacity: 0.65;
+        }
+
+        .shape-heart.small {
+            font-size: 16px;
+            opacity: 0.6;
+        }
+
+        /* Colorful Ribbons */
+        .shape-ribbon {
+            width: 30px;
+            height: 15px;
+            background: linear-gradient(45deg, #FF6B9D, #C44569);
+            border-radius: 8px 0 8px 0;
+            transform: rotate(-15deg);
+        }
+
+        .shape-ribbon.large {
+            width: 50px;
+            height: 25px;
+            opacity: 0.7;
+        }
+
+        .shape-ribbon.medium {
+            width: 40px;
+            height: 20px;
+            opacity: 0.65;
+        }
+
+        .shape-ribbon.small {
+            width: 25px;
+            height: 12px;
+            opacity: 0.6;
+        }
+
+        /* Yellow Suns */
+        .shape-sun {
+            color: #FFD700;
+            font-size: 20px;
+        }
+
+        .shape-sun.large {
+            font-size: 32px;
+            opacity: 0.7;
+        }
+
+        .shape-sun.medium {
+            font-size: 24px;
+            opacity: 0.65;
+        }
+
+        .shape-sun.small {
+            font-size: 16px;
+            opacity: 0.6;
+        }
+
+        /* Red Circles */
+        .shape-red-circle {
+            width: 30px;
+            height: 30px;
+            border: 3px solid #FF4757;
+            border-radius: 50%;
+            background: transparent;
+        }
+
+        .shape-red-circle.large {
+            width: 50px;
+            height: 50px;
+            border-width: 4px;
+            opacity: 0.65;
+        }
+
+        .shape-red-circle.medium {
+            width: 40px;
+            height: 40px;
+            border-width: 3px;
+            opacity: 0.6;
+        }
+
+        .shape-red-circle.small {
+            width: 25px;
+            height: 25px;
+            border-width: 2px;
+            opacity: 0.55;
+        }
+
+        /* Green Triangles */
+        .shape-green-triangle {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 26px solid #2ED573;
+        }
+
+        .shape-green-triangle.large {
+            border-left-width: 25px;
+            border-right-width: 25px;
+            border-bottom-width: 43px;
+            opacity: 0.6;
+        }
+
+        .shape-green-triangle.medium {
+            border-left-width: 20px;
+            border-right-width: 20px;
+            border-bottom-width: 35px;
+            opacity: 0.55;
+        }
+
+        .shape-green-triangle.small {
+            border-left-width: 12px;
+            border-right-width: 12px;
+            border-bottom-width: 21px;
+            opacity: 0.5;
+        }
+
+        @keyframes gentle-float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+                opacity: 0.3;
+            }
+            50% { 
+                transform: translateY(-15px) rotate(5deg); 
+                opacity: 0.5;
+            }
+        }
+
+        /* Shape Positioning */
+        .shape-1 { top: 8%; left: 5%; animation-delay: 0s; }
+        .shape-2 { top: 15%; right: 8%; animation-delay: 1s; }
+        .shape-3 { top: 25%; left: 15%; animation-delay: 2s; }
+        .shape-4 { top: 35%; right: 20%; animation-delay: 3s; }
+        .shape-5 { top: 45%; left: 8%; animation-delay: 4s; }
+        .shape-6 { top: 55%; right: 12%; animation-delay: 5s; }
+        .shape-7 { top: 65%; left: 25%; animation-delay: 6s; }
+        .shape-8 { top: 75%; right: 5%; animation-delay: 7s; }
+        .shape-9 { top: 85%; left: 12%; animation-delay: 0.5s; }
+        .shape-10 { top: 20%; left: 35%; animation-delay: 1.5s; }
+        .shape-11 { top: 40%; right: 35%; animation-delay: 2.5s; }
+        .shape-12 { top: 60%; left: 45%; animation-delay: 3.5s; }
+        .shape-13 { top: 80%; right: 25%; animation-delay: 4.5s; }
+        .shape-14 { top: 30%; left: 55%; animation-delay: 5.5s; }
+        .shape-15 { top: 70%; right: 45%; animation-delay: 6.5s; }
+        .shape-16 { top: 10%; left: 65%; animation-delay: 7.5s; }
+        .shape-17 { top: 50%; left: 75%; animation-delay: 0.8s; }
+        .shape-18 { top: 90%; left: 35%; animation-delay: 1.8s; }
+        .shape-19 { top: 5%; right: 45%; animation-delay: 2.8s; }
+        .shape-20 { top: 95%; right: 15%; animation-delay: 3.8s; }
+        .shape-21 { top: 12%; left: 85%; animation-delay: 1.2s; }
+        .shape-22 { top: 28%; right: 65%; animation-delay: 2.2s; }
+        .shape-23 { top: 42%; left: 85%; animation-delay: 3.2s; }
+        .shape-24 { top: 58%; right: 85%; animation-delay: 4.2s; }
+        .shape-25 { top: 72%; left: 65%; animation-delay: 5.2s; }
+        .shape-26 { top: 88%; right: 35%; animation-delay: 6.2s; }
+        .shape-27 { top: 18%; left: 25%; animation-delay: 0.3s; }
+        .shape-28 { top: 32%; right: 15%; animation-delay: 1.3s; }
+        .shape-29 { top: 48%; left: 45%; animation-delay: 2.3s; }
+        .shape-30 { top: 62%; right: 25%; animation-delay: 3.3s; }
+        .shape-31 { top: 78%; left: 85%; animation-delay: 4.3s; }
+        .shape-32 { top: 92%; right: 55%; animation-delay: 5.3s; }
+        .shape-33 { top: 6%; left: 45%; animation-delay: 0.7s; }
+        .shape-34 { top: 22%; right: 75%; animation-delay: 1.7s; }
+        .shape-35 { top: 38%; left: 75%; animation-delay: 2.7s; }
+        .shape-36 { top: 54%; right: 55%; animation-delay: 3.7s; }
+        .shape-37 { top: 68%; left: 15%; animation-delay: 4.7s; }
+        .shape-38 { top: 82%; right: 75%; animation-delay: 5.7s; }
+        .shape-39 { top: 14%; left: 95%; animation-delay: 0.9s; }
+        .shape-40 { top: 26%; right: 95%; animation-delay: 1.9s; }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #20B2AA, #48D1CC);
+            color: white;
+            text-align: center;
+            padding: 15px 20px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1em;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .content {
+            padding: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .left-card {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .right-card {
+            flex: 1;
+            min-width: 0;
+            background: #f0f9ff;
+            border-radius: 15px;
+            padding: 15px;
+            border: 2px solid #20B2AA;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .right-card:empty::before {
+            content: "👀 Click 'Preview Questions' to see your questions here!";
+            text-align: center;
+            color: #20B2AA;
+            font-size: 1.1em;
+            padding: 40px 20px;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        .form-section {
+            margin-bottom: 15px;
+        }
+
+        .form-section h3 {
+            color: #20B2AA;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            border-bottom: 2px solid #20B2AA;
+            padding-bottom: 2px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 4px;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .form-group select,
+        .form-group input {
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: #20B2AA;
+            box-shadow: 0 0 10px rgba(32, 178, 170, 0.3);
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #20B2AA, #48D1CC);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 18px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin: 6px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #008B8B, #20B2AA);
+        }
+
+        .btn-group {
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #20B2AA;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .preview-section {
+            display: none;
+        }
+
+        .preview-container {
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            margin-bottom: 0;
+            border: none;
+        }
+
+        .preview-container h4 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .download-section {
+            background: #e0f7fa;
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            display: none;
+            border: 2px solid #20B2AA;
+        }
+
+        .download-section h4 {
+            color: #008B8B;
+            margin-bottom: 8px;
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, #008B8B, #20B2AA);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 16px;
+            display: inline-block;
+            margin: 6px;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 8px;
+            border-radius: 6px;
+            margin: 10px 0;
+            display: none;
+        }
+
+        .success {
+            background: #e0f7fa;
+            color: #008B8B;
+            padding: 8px;
+            border-radius: 6px;
+            margin: 10px 0;
+            display: none;
+            border: 2px solid #20B2AA;
+        }
+
+        .question-preview {
+            background: white;
+            border: 2px solid #20B2AA;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .question-preview:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .question-preview h5 {
+            color: #20B2AA;
+            margin-bottom: 8px;
+        }
+
+        .question-preview .options {
+            margin-left: 20px;
+        }
+
+        .question-preview .option {
+            margin-bottom: 5px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .question-preview .option:hover {
+            background: #f0f0f0;
+        }
+
+        /* Mobile Responsive - Hide some shapes to reduce clutter */
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .right-card {
+                position: static;
+                max-height: none;
+                order: -1;
+            }
+
+                         /* Hide some decorative shapes on mobile */
+             .shape-4, .shape-6, .shape-8, .shape-10, .shape-12, 
+             .shape-14, .shape-16, .shape-18, .shape-20, .shape-22,
+             .shape-24, .shape-26, .shape-28, .shape-30, .shape-32,
+             .shape-34, .shape-36, .shape-38, .shape-40 {
+                 display: none;
+             }
+
+            /* Reduce animation intensity on mobile */
+            .decorative-shape {
+                animation-duration: 12s;
+            }
+        }
+
+                 /* Hide even more shapes on very small screens */
+         @media (max-width: 480px) {
+             .shape-2, .shape-5, .shape-7, .shape-9, .shape-11, 
+             .shape-13, .shape-15, .shape-17, .shape-19, .shape-21,
+             .shape-23, .shape-25, .shape-27, .shape-29, .shape-31,
+             .shape-33, .shape-35, .shape-37, .shape-39 {
+                 display: none;
+             }
+         }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Kids Practice PDF Generator</h1>
+            <p>Create fun and educational worksheets for UK curriculum!</p>
+        </div>
+
+        <div class="content">
+            <div class="left-card">
+                <form id="worksheetForm">
+                    <div class="form-section">
+                        <h3>📚 Subject & Topic Selection</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="subject">Subject:</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a subject...</option>
+                                    {% for key, name in subjects.items() %}
+                                    <option value="{{ key }}">{{ name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="topic">Topic:</label>
+                                <select id="topic" name="topic" required disabled>
+                                    <option value="">Select a topic...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>🎯 Worksheet Settings</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="yearGroup">Year Group:</label>
+                                <select id="yearGroup" name="yearGroup" required>
+                                    <option value="">Select year group...</option>
+                                    <option value="Year 1">Year 1</option>
+                                    <option value="Year 2">Year 2</option>
+                                    <option value="Year 3">Year 3</option>
+                                    <option value="Year 4">Year 4</option>
+                                    <option value="Year 5">Year 5</option>
+                                    <option value="Year 6">Year 6</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="difficulty">Difficulty Level:</label>
+                                <select id="difficulty" name="difficulty" required>
+                                    <option value="">Select difficulty...</option>
+                                    <option value="Easy">Easy 🌱</option>
+                                    <option value="Medium">Medium 🌿</option>
+                                    <option value="Hard">Hard 🌳</option>
+                                </select>
+                            </div>
+                                                         <div class="form-group">
+                                 <label for="numQuestions">Number of Questions:</label>
+                                 <input type="number" id="numQuestions" name="numQuestions" min="1" max="25" value="10" required>
+                                 <small style="color: #666; font-size: 0.85em; margin-top: 2px;">Maximum 25 questions allowed</small>
+                             </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                                                 <button type="button" class="btn btn-secondary" onclick="previewQuestions()" style="color: white; font-weight: bold;">👀 Preview Questions</button>
+                         <button type="button" class="btn" onclick="generateWorksheet()" style="color: white; font-weight: bold;">📄 Generate PDF</button>
+                    </div>
+                </form>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Generating your worksheet...</p>
+                </div>
+
+                <div class="error" id="error"></div>
+                <div class="success" id="success"></div>
+
+                <div class="download-section" id="downloadSection">
+                    <h4>📥 Download Your Worksheets</h4>
+                                         <a href="#" class="download-btn" id="downloadWorksheet" style="color: white; font-weight: bold;">📄 Download Worksheet</a>
+                     <a href="#" class="download-btn" id="downloadAnswerKey" style="color: white; font-weight: bold;">🔑 Download Answer Key</a>
+                </div>
+            </div>
+
+            <div class="right-card">
+                <div class="preview-section" id="previewSection">
+                    <div class="preview-container">
+                        <h4>📋 Question Preview</h4>
+                        <div id="questionPreview"></div>
+                    </div>
+                </div>
+                                 <div id="placeholderMessage" style="text-align: center; color: #20B2AA; font-size: 1.1em; padding: 40px 20px; opacity: 0.7; font-style: italic;">
+                     👀 Click 'Preview Questions' to see your questions here!
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Khan Academy Style Decorative Shapes -->
+    <!-- Orange Crosses -->
+    <div class="decorative-shape shape-cross large shape-1">✕</div>
+    <div class="decorative-shape shape-cross medium shape-2">✕</div>
+    <div class="decorative-shape shape-cross small shape-3">✕</div>
+    
+    <!-- Purple Circles -->
+    <div class="decorative-shape shape-circle large shape-4"></div>
+    <div class="decorative-shape shape-circle medium shape-5"></div>
+    <div class="decorative-shape shape-circle small shape-6"></div>
+    
+    <!-- Mint Green Diamonds -->
+    <div class="decorative-shape shape-diamond large shape-7"></div>
+    <div class="decorative-shape shape-diamond medium shape-8"></div>
+    <div class="decorative-shape shape-diamond small shape-9"></div>
+    
+    <!-- Yellow Stars -->
+    <div class="decorative-shape shape-star large shape-10">✦</div>
+    <div class="decorative-shape shape-star medium shape-11">✦</div>
+    <div class="decorative-shape shape-star small shape-12">✦</div>
+    
+    <!-- Blue Geometric Shapes -->
+    <div class="decorative-shape shape-triangle large shape-13"></div>
+    <div class="decorative-shape shape-triangle medium shape-14"></div>
+    <div class="decorative-shape shape-triangle small shape-15"></div>
+    <div class="decorative-shape shape-square large shape-16"></div>
+    <div class="decorative-shape shape-square medium shape-17"></div>
+    <div class="decorative-shape shape-square small shape-18"></div>
+    
+         <!-- Additional mixed shapes for variety -->
+     <div class="decorative-shape shape-cross medium shape-19">✕</div>
+     <div class="decorative-shape shape-circle large shape-20"></div>
+     
+     <!-- Pink Hearts -->
+     <div class="decorative-shape shape-heart large shape-21">♥</div>
+     <div class="decorative-shape shape-heart medium shape-22">♥</div>
+     <div class="decorative-shape shape-heart small shape-23">♥</div>
+     
+     <!-- Colorful Ribbons -->
+     <div class="decorative-shape shape-ribbon large shape-24"></div>
+     <div class="decorative-shape shape-ribbon medium shape-25"></div>
+     <div class="decorative-shape shape-ribbon small shape-26"></div>
+     
+     <!-- Yellow Suns -->
+     <div class="decorative-shape shape-sun large shape-27">☀</div>
+     <div class="decorative-shape shape-sun medium shape-28">☀</div>
+     <div class="decorative-shape shape-sun small shape-29">☀</div>
+     
+     <!-- Red Circles -->
+     <div class="decorative-shape shape-red-circle large shape-30"></div>
+     <div class="decorative-shape shape-red-circle medium shape-31"></div>
+     <div class="decorative-shape shape-red-circle small shape-32"></div>
+     
+     <!-- Green Triangles -->
+     <div class="decorative-shape shape-green-triangle large shape-33"></div>
+     <div class="decorative-shape shape-green-triangle medium shape-34"></div>
+     <div class="decorative-shape shape-green-triangle small shape-35"></div>
+     
+     <!-- More Stars -->
+     <div class="decorative-shape shape-star large shape-36">✦</div>
+     <div class="decorative-shape shape-star medium shape-37">✦</div>
+     <div class="decorative-shape shape-star small shape-38">✦</div>
+     
+     <!-- More Hearts -->
+     <div class="decorative-shape shape-heart medium shape-39">♥</div>
+     <div class="decorative-shape shape-heart small shape-40">♥</div>
+
+    <script>
+        // Global variables
+        let currentWorksheetPath = '';
+        let currentAnswerPath = '';
+        let currentTimestamp = '';
+
+                 // Subject change handler
+         document.getElementById('subject').addEventListener('change', function() {
+             const subject = this.value;
+             const topicSelect = document.getElementById('topic');
+             
+             // Reset topic dropdown
+             topicSelect.innerHTML = '<option value="">Select a topic...</option>';
+             topicSelect.disabled = true;
+             
+             if (subject) {
+                 // Fetch topics for selected subject
+                 fetch(`/get_topics/${subject}`)
+                     .then(response => response.json())
+                     .then(topics => {
+                         topicSelect.disabled = false;
+                         Object.entries(topics).forEach(([key, value]) => {
+                             const option = document.createElement('option');
+                             option.value = key;
+                             option.textContent = value;
+                             topicSelect.appendChild(option);
+                         });
+                     })
+                     .catch(error => {
+                         console.error('Error fetching topics:', error);
+                         showError('Failed to load topics. Please try again.');
+                     });
+             }
+         });
+
+         // Number of questions validation
+         document.getElementById('numQuestions').addEventListener('input', function() {
+             const value = parseInt(this.value);
+             const errorDiv = document.getElementById('error');
+             
+             if (value > 25) {
+                 showError('Maximum 25 questions allowed. Please enter a number between 1 and 25.');
+                 this.style.borderColor = '#c62828';
+             } else if (value < 1 && this.value !== '') {
+                 showError('Minimum 1 question required. Please enter a number between 1 and 25.');
+                 this.style.borderColor = '#c62828';
+             } else {
+                 hideMessages();
+                 this.style.borderColor = '#ddd';
+             }
+         });
+
+        function previewQuestions() {
+            const formData = getFormData();
+            if (!formData) return;
+
+            showLoading(true);
+            hideMessages();
+            resetPreview();
+
+            fetch('/preview_questions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                showLoading(false);
+                if (data.success) {
+                    displayQuestionPreview(data.questions);
+                    showSuccess('Questions preview generated successfully!');
+                } else {
+                    showError(data.error || 'Failed to generate preview.');
+                }
+            })
+            .catch(error => {
+                showLoading(false);
+                console.error('Error:', error);
+                showError('Failed to generate preview. Please try again.');
+            });
+        }
+
+        function generateWorksheet() {
+            const formData = getFormData();
+            if (!formData) return;
+
+            showLoading(true);
+            hideMessages();
+            // Don't reset preview - keep it visible
+
+            fetch('/generate_worksheet', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                showLoading(false);
+                if (data.success) {
+                    currentWorksheetPath = data.worksheet_path;
+                    currentAnswerPath = data.answer_path;
+                    currentTimestamp = data.timestamp;
+                    
+                    setupDownloadLinks();
+                    showSuccess('Worksheets generated successfully! You can now download them.');
+                } else {
+                    showError(data.error || 'Failed to generate worksheets.');
+                }
+            })
+            .catch(error => {
+                showLoading(false);
+                console.error('Error:', error);
+                showError('Failed to generate worksheets. Please try again.');
+            });
+        }
+
+                 function getFormData() {
+             const form = document.getElementById('worksheetForm');
+             const formData = new FormData(form);
+             
+             const data = {
+                 subject: formData.get('subject'),
+                 topic: formData.get('topic'),
+                 year_group: formData.get('yearGroup'),
+                 difficulty: formData.get('difficulty'),
+                 num_questions: parseInt(formData.get('numQuestions'))
+             };
+
+             // Validation
+             if (!data.subject || !data.topic || !data.year_group || !data.difficulty) {
+                 showError('Please fill in all required fields.');
+                 return null;
+             }
+
+             // Check number of questions
+             if (data.num_questions < 1 || data.num_questions > 25) {
+                 showError('Number of questions must be between 1 and 25.');
+                 return null;
+             }
+
+             return data;
+         }
+
+        function displayQuestionPreview(questions) {
+            const previewContainer = document.getElementById('questionPreview');
+            const placeholderMessage = document.getElementById('placeholderMessage');
+            previewContainer.innerHTML = '';
+
+            questions.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-preview';
+                
+                let optionsHtml = '';
+                question.options.forEach((option, optionIndex) => {
+                    optionsHtml += `<div class="option">${String.fromCharCode(65 + optionIndex)}. ${option}</div>`;
+                });
+
+                questionDiv.innerHTML = `
+                    <h5>Question ${index + 1}:</h5>
+                    <p>${question.question}</p>
+                    <div class="options">${optionsHtml}</div>
+                `;
+                
+                previewContainer.appendChild(questionDiv);
+            });
+
+            document.getElementById('previewSection').style.display = 'block';
+            placeholderMessage.style.display = 'none';
+        }
+
+        function setupDownloadLinks() {
+            const worksheetLink = document.getElementById('downloadWorksheet');
+            const answerLink = document.getElementById('downloadAnswerKey');
+
+            worksheetLink.href = `/download/worksheet/${currentTimestamp}?path=${encodeURIComponent(currentWorksheetPath)}`;
+            answerLink.href = `/download/answer/${currentTimestamp}?path=${encodeURIComponent(currentAnswerPath)}`;
+
+            document.getElementById('downloadSection').style.display = 'block';
+        }
+
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('success');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+        }
+
+        function hideMessages() {
+            document.getElementById('error').style.display = 'none';
+            document.getElementById('success').style.display = 'none';
+        }
+
+        function resetPreview() {
+            const previewSection = document.getElementById('previewSection');
+            const placeholderMessage = document.getElementById('placeholderMessage');
+            previewSection.style.display = 'none';
+            placeholderMessage.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

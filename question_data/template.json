@@ -1,0 +1,25 @@
+{
+  "subject_name": "Subject Name",
+  "topics": {
+    "topic_key": {
+      "display_name": "Topic Display Name",
+      "year_groups": {
+        "Year 1": {
+          "Easy": [
+            {
+              "question": "Sample question?",
+              "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "correct_answer": "A",
+              "explanation": "Explanation here."
+            }
+          ]
+        }
+      }
+    }
+  }
+}

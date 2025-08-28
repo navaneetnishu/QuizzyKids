@@ -1,0 +1,24 @@
+# Ultra-cost-effective requirements for £20/month scaling
+# Target: 100k users, 10k concurrent downloads
+
+# Core Flask (minimal dependencies)
+Flask==2.3.3
+Flask-CORS==4.0.0
+Flask-Limiter==3.5.0
+
+# PDF Generation (essential only)
+reportlab==4.0.4
+Pillow==10.0.1
+
+# Ultra-cheap storage (Cloudflare R2)
+boto3==1.34.0
+
+# Production Server (minimal)
+gunicorn==21.2.0
+
+# Environment
+python-dotenv==1.0.0
+
+# No Redis (using in-memory cache instead)
+# No additional monitoring (using built-in)
+# No additional security (using basic)

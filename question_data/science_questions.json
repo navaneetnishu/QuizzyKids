@@ -1,0 +1,38 @@
+[
+  {
+    "topic": "living_things",
+    "year_group": "Year 4",
+    "difficulty": "Medium",
+    "question": "Which planet is closest to the Sun?",
+    "options": ["Mercury", "Venus", "Earth", "Mars"],
+    "correct_answer": "Mercury",
+    "explanation": "Mercury is the closest planet to the Sun in our solar system."
+  },
+  {
+    "topic": "living_things",
+    "year_group": "Year 4",
+    "difficulty": "Medium",
+    "question": "What is the main gas that plants need for photosynthesis?",
+    "options": ["Oxygen", "Carbon dioxide", "Nitrogen", "Hydrogen"],
+    "correct_answer": "Carbon dioxide",
+    "explanation": "Plants use carbon dioxide and water to make their own food through photosynthesis."
+  },
+  {
+    "topic": "living_things",
+    "year_group": "Year 4",
+    "difficulty": "Medium",
+    "question": "Which of these is a vertebrate animal?",
+    "options": ["Spider", "Snail", "Fish", "Jellyfish"],
+    "correct_answer": "Fish",
+    "explanation": "Fish have a backbone (spine), making them vertebrates."
+  },
+  {
+    "topic": "plants",
+    "year_group": "Year 2",
+    "difficulty": "Easy",
+    "question": "What do plants need to grow?",
+    "options": ["Water, sunlight, soil", "Only water", "Only sunlight", "Only soil"],
+    "correct_answer": "Water, sunlight, soil",
+    "explanation": "Plants need water, sunlight, and soil to grow properly."
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "topic": "world_history",
+    "year_group": "Year 6",
+    "difficulty": "Hard",
+    "question": "In which year did World War II end?",
+    "options": ["1943", "1944", "1945", "1946"],
+    "correct_answer": "1945",
+    "explanation": "World War II ended in 1945 with the surrender of Germany and Japan."
+  },
+  {
+    "topic": "ancient_egypt",
+    "year_group": "Year 3",
+    "difficulty": "Easy",
+    "question": "What were the ancient Egyptians famous for building?",
+    "options": ["Pyramids", "Castles", "Bridges", "Towers"],
+    "correct_answer": "Pyramids",
+    "explanation": "The ancient Egyptians built the famous pyramids as tombs for their pharaohs."
+  }
+]

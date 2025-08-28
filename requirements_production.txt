@@ -1,0 +1,36 @@
+# Production requirements for cost-effective scaling
+# Target: $30-40/month with 10k+ concurrent users
+
+# Core Flask
+Flask==2.3.3
+Flask-CORS==4.0.0
+Flask-Limiter==3.5.0
+
+# PDF Generation
+reportlab==4.0.4
+Pillow==10.0.1
+
+# Database & Caching
+redis==5.0.1
+sqlite3  # Built-in Python module
+
+# Cloud Storage (Backblaze B2 - cost-effective)
+b2sdk==1.24.0
+
+# Production Server
+gunicorn==21.2.0
+gevent==23.7.0
+
+# Monitoring & Logging
+prometheus-client==0.17.1
+python-json-logger==2.0.7
+
+# Security
+cryptography==41.0.7
+
+# Environment
+python-dotenv==1.0.0
+
+# Optional: For better performance
+ujson==5.8.0  # Faster JSON parsing
+orjson==3.9.10  # Even faster JSON (alternative)
