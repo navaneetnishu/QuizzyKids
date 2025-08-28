@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🎓 Kids Practice PDF Generator
 
 A comprehensive PDF multiple-choice question generator designed specifically for UK curriculum students in Years 1-6. This application creates printable worksheets and answer keys for various subjects with age-appropriate difficulty levels.
@@ -189,3 +190,7 @@ This application is designed to support:
 ---
 
 **Made with ❤️ for UK Education**
+=======
+# QuizzyKids
+PDF MCQ generator
+>>>>>>> 5b8aa329595ca25d13a6c1acc2852a984c984ff5
